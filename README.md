@@ -2,10 +2,6 @@
 
 ## Diego Alexander Cardenas Beltran
 
-## Implementaciones
-- Spring Boot
-- Maven
-
 # Detalles
 
 # Stock Market Web Microservices - Spring Boot Backend
