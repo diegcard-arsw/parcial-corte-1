@@ -1,5 +1,9 @@
 package com.arsw.parcial.utils;
 
+import java.io.UnsupportedEncodingException;
+
+import org.springframework.web.util.UriUtils;
+
 public class Utils {
 
     public static final String BASE_URI = "http://www.alphavantage.co/query?";
