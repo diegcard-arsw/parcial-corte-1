@@ -1,6 +1,8 @@
 package com.arsw.parcial.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.arsw.parcial.models.CompareResultDTO;
@@ -20,27 +22,27 @@ public class StockController {
     private InvestmentAnalysisService investmentAnalysisService;
 
     @GetMapping("/{symbol}/intraday")
-    public StockDataDTO getIntraday(@PathVariable String symbol) {
-        return stockService.getIntradayData(symbol);
+    public ResponseEntity<StockDataDTO> getIntraday(@PathVariable String symbol) {
+        return ResponseEntity.ok(stockService.getIntradayData(symbol));
     }
 
     @GetMapping("/{symbol}/daily")
-    public StockDataDTO getDaily(@PathVariable String symbol) {
-        return stockService.getDailyData(symbol);
+    public ResponseEntity<StockDataDTO> getDaily(@PathVariable String symbol) {
+        return ResponseEntity.ok(stockService.getDailyData(symbol));
     }
 
     @GetMapping("/{symbol}/weekly")
-    public StockDataDTO getWeekly(@PathVariable String symbol) {
-        return stockService.getWeeklyData(symbol);
+    public ResponseEntity<StockDataDTO> getWeekly(@PathVariable String symbol) {
+        return ResponseEntity.ok(stockService.getWeeklyData(symbol));
     }
 
     @GetMapping("/{symbol}/monthly")
-    public StockDataDTO getMonthly(@PathVariable String symbol) {
-        return stockService.getMonthlyData(symbol);
+    public ResponseEntity<StockDataDTO> getMonthly(@PathVariable String symbol) {
+        return ResponseEntity.ok(stockService.getMonthlyData(symbol));
     }
 
     @PostMapping("/compare")
-    public CompareResultDTO compareStocks(@RequestParam String symbol1, @RequestParam String symbol2) {
-        return investmentAnalysisService.compareStocks(symbol1, symbol2);
+    public ResponseEntity<CompareResultDTO> compareStocks(@RequestParam String symbol1, @RequestParam String symbol2) {
+        return ResponseEntity.status(200).body(investmentAnalysisService.compareStocks(symbol1, symbol2));
     }
 }
